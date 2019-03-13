@@ -81,6 +81,7 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = \App\Task::find($id);
+        $task->delete();
     }
 }
