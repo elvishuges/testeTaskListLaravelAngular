@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Task } from "../task";
 import { TaskService } from "../task.service";
-import { Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
-import { Subscription } from "rxjs";
 import {Injectable} from "@angular/core";
 
 
