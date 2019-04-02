@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskService } from "./task.service";
-import { TasklistComponent } from './tasklist/tasklist.component';
+
 
 
 const routes: Routes = [  
@@ -23,7 +23,7 @@ const routes: Routes = [
     AppComponent,
     TaskListComponent,
     TaskFormComponent,
-    TasklistComponent
+    
   ],
   imports: [
     BrowserModule,
