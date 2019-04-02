@@ -1,0 +1,30 @@
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Current Tasks</div>
+                <div class="panel-body">
+                  <div class="">
+                    <label for="email" class="col-md-4 control-label">Tasks</label>  
+                    
+                  </div>                    
+                  
+                  <ul class="list-group list-group-flush" >
+                      <li class="list-group-item" ></li>  
+                    <li class="list-group-item" *ngFor= "let task of tasks">{{task.descricao}}
+                        <button style="color:black"   (click)="delete(task)" class="">
+                            <i class=""></i> - Remove task
+                        </button>
+                    </li> 
+                                     
+                  </ul>               
+                  
+                  <hr>               
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
