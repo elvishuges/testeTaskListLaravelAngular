@@ -28,6 +28,10 @@ addTask(task:Task){
   return this.http.post(this.laravel_URL_API, task);   
 }
 
+updateTask(id:number,task:Task){
+  //return this.http.put(this.laravel_URL_API, task);
+  return this.http.put(`${this.laravel_URL_API}/${id}`,task);  
+}
 
 deleteTask(id:number){ // eu fiz
   console.log('em Delete..');  

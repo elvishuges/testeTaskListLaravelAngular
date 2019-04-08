@@ -69,8 +69,14 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $task = Task::find($id);
+        if($task){
+            $task->descricao = $request->get('descricao');
+            $task->save();        
+            return 'ok';
+        }
+        
     }
 
     /**
