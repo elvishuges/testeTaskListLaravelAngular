@@ -21,9 +21,10 @@
                         <input [(ngModel)]="selectedTask" type="text" class="row toggle"  class="custom-input" *ngIf="task.id == index" >
                       </div>
                         <div>
-                          <button  (click)="delete(task)" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-                          <button  (click)="editTask(task)" type="button" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button> 
-                          <button  (click)="cancleEdit(task)" type="button" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></button> 
+                          <button (click)="delete(task)" *ngIf="task.id !== index" type="button" class="btn btn-danger">delete</button>
+                          <button (click)="editTask(task)"  *ngIf="task.id !== index" type="button" class="btn btn-success">Edite</button> 
+                          <button *ngIf="task.id == index"  (click)="atualizarTask(task)" type="button" class="btn btn-success">Editar</button>
+                          <button *ngIf="task.id == index" (click)="cancleEdit(task)" type="button" class="btn btn-danger">Cancelar</button>
                         </div>
                         
                     </div>

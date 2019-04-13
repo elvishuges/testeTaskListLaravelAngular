@@ -29,6 +29,7 @@ addTask(task:Task){
 }
 
 updateTask(id:number,task:Task){
+  console.log(id);
   //return this.http.put(this.laravel_URL_API, task);
   return this.http.put(`${this.laravel_URL_API}/${id}`,task);  
 }

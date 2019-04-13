@@ -70,12 +70,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $task = Task::find($id);
-        if($task){
+        return $id;
+        $task = \App\Task::find($id);
+        
             $task->descricao = $request->get('descricao');
             $task->save();        
-            return 'ok';
-        }
+            
+        
+
+        return 'erro';
         
     }
 
@@ -86,8 +89,8 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $task = \App\Task::find($id);
+    {   //return 'oiiii';
+        $task = \App\Task::find($id);        
         $task->delete();
     }
 }

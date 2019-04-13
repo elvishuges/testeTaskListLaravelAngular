@@ -13,6 +13,7 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class TaskListComponent implements OnInit {
   index: number;
+  id: number;
   selectedTask: string;
   tasks: Array<Task> = [];  
   task : Task = {
@@ -44,11 +45,24 @@ export class TaskListComponent implements OnInit {
   editTask(task) :void{
     console.log("worked" + task.id);
     this.index = task.id;   
+    this.id = task.id;
     this.selectedTask = task.descricao;
   }
 
   cancleEdit(task):void {
     this.index = 0;
+  }
+
+  atualizarTask(task):void{
+
+    const taskAux = <Task>{
+      descricao: this.selectedTask,
+      id: this.id
+    };
+    this.taskService.updateTask(taskAux.id,taskAux);    
+    console.log(taskAux);
+    console.log(task);
+   
   }
 
 
