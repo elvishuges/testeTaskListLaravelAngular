@@ -12,8 +12,9 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class TaskListComponent implements OnInit {
-
-  tasks: Array<Task> = [];
+  index: number;
+  selectedTask: string;
+  tasks: Array<Task> = [];  
   task : Task = {
     descricao:" " ,
     id : null
@@ -22,6 +23,7 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
+    this.index = 0;
     this.getTasks();
   }  
  
@@ -38,11 +40,23 @@ export class TaskListComponent implements OnInit {
       )
       
   }
+  
+  editTask(task) :void{
+    console.log("worked" + task.id);
+    this.index = task.id;   
+    this.selectedTask = task.descricao;
+  }
+
+  cancleEdit(task):void {
+    this.index = 0;
+  }
+
+
 
   delete(task): void {
     console.log(task.id);    
     this.taskService.deleteTask(task.id).subscribe(data => {
-      console.log('em delete safado'+this.tasks  );
+      console.log('em delete safado'+this.tasks);
       this.tasks = this.tasks.filter(u => u !== task);
     });
   }
