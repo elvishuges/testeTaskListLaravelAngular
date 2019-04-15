@@ -64,6 +64,14 @@ export class TaskListComponent implements OnInit {
     console.log('-----');
     console.log(task);
     this.taskService.updateTask(taskAux);    
+    this.tasks.forEach(element=> {
+      if (element.id == this.id) {
+        element.descricao = this.selectedTask;
+        element.id=  this.index ;
+      }
+    });
+
+  
   }
 
   delete(task): void {

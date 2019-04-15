@@ -43,7 +43,11 @@ updateTask(task:Task){
 
   //return this.http.put(this.laravel_URL_API, task);
   return this.http.put(`${this.laravel_URL_API}/${task.id}`,task)
-  .subscribe(res => console.log(res));
+  .subscribe(res => {
+    console.log(res);
+  }
+    
+    );
 }
 
 deleteTask(id:number){ // eu fiz
