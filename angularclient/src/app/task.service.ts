@@ -6,12 +6,18 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable, Subject } from 'rxjs';
 import { map } from "rxjs/operators";
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService { 
-  
+ 
   laravel_URL_API: string = 'http://localhost:8000/tasks';
   public newTaskSubject = new Subject<any>();
   constructor(private http:Http,private httpClient: HttpClient) {
@@ -28,10 +34,16 @@ addTask(task:Task){
   return this.http.post(this.laravel_URL_API, task);   
 }
 
-updateTask(id:number,task:Task){
-  console.log(id);
+updateTask(task:Task){
+  var headers = new Headers();
+  headers.append('Content-type','application/json');
+  console.log('em update Task :');
+  console.log(task);
+  console.log(task.id);
+
   //return this.http.put(this.laravel_URL_API, task);
-  return this.http.put(`${this.laravel_URL_API}/${id}`,task);  
+  return this.http.put(`${this.laravel_URL_API}/${task.id}`,task)
+  .subscribe(res => console.log(res));
 }
 
 deleteTask(id:number){ // eu fiz

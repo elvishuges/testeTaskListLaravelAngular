@@ -59,13 +59,12 @@ export class TaskListComponent implements OnInit {
       descricao: this.selectedTask,
       id: this.id
     };
-    this.taskService.updateTask(taskAux.id,taskAux);    
+    console.log('Aux:')
     console.log(taskAux);
+    console.log('-----');
     console.log(task);
-   
+    this.taskService.updateTask(taskAux);    
   }
-
-
 
   delete(task): void {
     console.log(task.id);    

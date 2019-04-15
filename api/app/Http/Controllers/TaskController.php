@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Task;
 
 class TaskController extends Controller
 {
@@ -70,15 +71,21 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        return $id;
-        $task = \App\Task::find($id);
+        //return $id;
         
-            $task->descricao = $request->get('descricao');
-            $task->save();        
-            
+        $task = Task::find($id);  
         
-
-        return 'erro';
+        if(!$task) {
+            return response()->json([
+                'message'   => 'Record not found',
+            ], 404);
+        }
+        
+        //$task->descricao = $request->descricao;
+        $task->fill($request->all());
+        $task->save();
+        return response()->json($task);    
+      
         
     }
 
