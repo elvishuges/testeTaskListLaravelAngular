@@ -1,42 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Current Tasks</div>
+        <div class="panel-body">
+          <div class="">
+            <label for="email" class="col-md-4 control-label">Tasks</label>
 
-  <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Current Tasks</div>
-                <div class="panel-body">
-                  <div class="">
-                    <label for="email" class="col-md-4 control-label">Tasks</label>  
-                    
-                  </div>                    
-                  
-                  <ul class="list-group list-group-flush" >
-                      <li class="list-group-item" ></li>  
-                    <li class="list-group-item" *ngFor= "let task of tasks">
-                      <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
-                        <div  *ngIf="task.id !== index" class="col-xs-8">
-                          {{task.descricao}}
-                        </div>
-                        <div class="col-xs-8">
-                        <input [(ngModel)]="selectedTask" type="text" class="row toggle"  class="custom-input" *ngIf="task.id == index" >
-                      </div>
-                        <div>
-                          <button (click)="delete(task)" *ngIf="task.id !== index" type="button" class="btn btn-danger">delete</button>
-                          <button (click)="editTask(task)"  *ngIf="task.id !== index" type="button" class="btn btn-success">Edite</button> 
-                          <button *ngIf="task.id == index"  (click)="atualizarTask(task)" type="button" class="btn btn-success">Editar</button>
-                          <button *ngIf="task.id == index" (click)="cancleEdit(task)" type="button" class="btn btn-danger">Cancelar</button>
-                        </div>
-                        
-                    </div>
-                    </li> 
-                                     
-                  </ul>               
-                  
-                  <hr>               
-                   
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"></li>
+            <li class="list-group-item" *ngFor="let task of tasks">
+              <div class="container" id="dropdown-detail-1" data-toggle="detail-1">
+                <div *ngIf="task.id !== index" class="col-xs-8">
+                  {{task.descricao}}
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="col-xs-8">
+                    <textarea class="form-control" [(ngModel)]="selectedTask" *ngIf="task.id == index" rows="5" id="comment"> </textarea>
+                 
+                </div>
 
+                <div>
+                  <button (click)="delete(task)" *ngIf="task.id !== index" type="button"
+                    class="btn btn-danger">delete</button>
+                  <button (click)="editTask(task)" *ngIf="task.id !== index" type="button"
+                    class="btn btn-success">Edite</button>
+                  <button *ngIf="task.id == index" (click)="atualizarTask(task)" type="button"
+                    class="btn btn-success">Editar</button>
+                  <button *ngIf="task.id == index" (click)="cancleEdit(task)" type="button"
+                    class="btn btn-danger">Cancelar</button>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <hr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
